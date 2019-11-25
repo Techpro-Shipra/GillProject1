@@ -1,0 +1,272 @@
+<div class="grid-wrapper form-validation-wrapper " style="width:100%">
+        <div class="app-card">
+            <mat-card>
+                <div class="card-title" style="box-shadow:none !important;">
+                    <h1>Player Search</h1>
+                </div>
+                <div class="card-content-content">
+                    <form [formGroup]="searchplayer" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <mat-form-field class="full-wid">
+                                <mat-select placeholder="Subscription type" formControlName="stype">
+                                    <mat-option value="Select">Select</mat-option>
+                                    <mat-option value="push">push</mat-option>
+                                    <mat-option value="leaving">leaving</mat-option>
+                                    <mat-option value="Neutral">Neutral</mat-option>
+                                    <mat-option value="Took">Took a job</mat-option>
+                                    <mat-option value="Summoned">Summoned 1</mat-option>
+                                    <mat-option value="Invited">Invited 0</mat-option>
+                                    <mat-option value="Inlands">Inlands leased</mat-option>
+                                    <mat-option value="Problematic">Problematic Agency</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="form-group">
+                            <mat-form-field class="full-wid">
+                                <mat-select placeholder="Took a job" formControlName="tookajob">
+                                    <mat-option value="no">No</mat-option>
+                                    <mat-option value="yes">Yes</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+    
+                        <div class="form-group">
+                            <mat-form-field class="full-wid">
+                                <textarea matInput placeholder="Names upon completion:" formControlName="Descrp" required></textarea>
+                            </mat-form-field>
+                        </div>
+                        <div class="form-group">
+                            <div class="inline-checkbox mb-4">
+                                <mat-label class="mr-5">Gender</mat-label>
+                                <mat-checkbox type="checkbox" class="mr-3" value="Male">Male</mat-checkbox>
+                                <mat-checkbox type="checkbox" class="mr-3" value="Female">Female</mat-checkbox>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <mat-label class="mr-5">Age</mat-label>
+                            <mat-form-field class="mr-5">
+    
+                                <input matInput placeholder="
+                                            Until">
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput placeholder="M">
+                            </mat-form-field>
+                        </div>
+                        <div class="form-group">
+                            <mat-label class="mr-4">Height</mat-label>
+                            <mat-form-field class="mr-5">
+                                <input matInput placeholder="
+                                            Until">
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput placeholder="M">
+                            </mat-form-field>
+                        </div>
+    
+                        <div class="form-group">
+                            <mat-form-field class="full-wid">
+                                <input matInput placeholder="First Name" formControlName="FirstName">
+                            </mat-form-field>
+                            <mat-error *ngIf="searchplayer.controls['FirstName'].touched && !searchplayer.controls['FirstName'].valid">
+                                <mat-error *ngIf="searchplayer.controls['FirstName'].hasError('required') " class="required alert-error">
+                                    You must include a First Name.
+                                </mat-error>
+                            </mat-error>
+                        </div>
+                        <div class="form-group">
+                            <mat-form-field class="full-wid">
+                                <input matInput placeholder="Last Name" formControlName="LirstName">
+                            </mat-form-field>
+                            <mat-error *ngIf="searchplayer.controls['LirstName'].touched && !searchplayer.controls['LirstName'].valid">
+                                <mat-error *ngIf="searchplayer.controls['LirstName'].hasError('required') " class="required alert-error">
+                                    You must include a Last Name.
+                                </mat-error>
+                            </mat-error>
+                        </div>
+                        <div class="form-group">
+                            <mat-form-field class="full-wid">
+                                <mat-select placeholder="Agency" formControlName="agency">
+                                    <mat-option value="One">ADD</mat-option>
+                                    <mat-option value="Two">Agenda</mat-option>
+                                    <mat-option value="Two">sharon agency</mat-option>
+                                    <mat-option value="Two">tlv models</mat-option>
+                                    <mat-option value="Two">Ofir Stern</mat-option>
+                                    <mat-option value="Two">Ayala Barak</mat-option>
+                                    <mat-option value="Two">Ilan Tzler (Marina and Ilan)</mat-option>
+                                    <mat-option value="Two">Irit Miller and Shai Ghani</mat-option>
+                                    <mat-option value="Two">Eleanor Dawn</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="form-group">
+                            <mat-form-field class="full-wid">
+                                <mat-select placeholder="Subscription" formControlName="subscription">
+                                    <mat-option value="1">Yes</mat-option>
+                                    <mat-option value="2">No</mat-option>
+                                    <mat-option value="3">Yes, by date</mat-option>
+                                    <mat-option value="4">Does not matter</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="form-group">
+                            <mat-form-field class="full-wid">
+                                <input matInput [matDatepicker]="picker1" formControlName='BirthDay' placeholder="Subscription dated" required>
+                                <!-- <input matInput [ngModel]="pickerTwoValue | date:'dd/MM/yyyy'" placeholder="Choose a date"> -->
+                                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                <mat-datepicker #picker1></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <div class="form-group">
+                            <mat-label class="mr-4">Filter by additional capabilities</mat-label>
+    
+                            <button (click)="toggleShow()" type="button" class="mat-flat-button mat-button-base mat-primary" style="font-size:13px;font-weight:500;"><span *ngIf="isShown">-</span><span *ngIf="!isShown">+</span></button>
+                            <div *ngIf="isShown" class="row container-fluid" id="divshow">
+                                <div class="form-group">
+                                    <div class="inline-checkbox mb-4">
+                                        <div class="form-group mb-2">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <mat-label class="mr-3">Improvisation</mat-label>
+                                                    </td>
+                                                    <td>
+                                                        <mat-checkbox type="checkbox" class="mr-3" value="1">Playback Etron</mat-checkbox>
+                                                        <mat-checkbox type="checkbox" class="mr-3" value="2">From the School | Productions</mat-checkbox>
+                                                        <mat-checkbox type="checkbox" class="mr-3" value="3">Workshop course study</mat-checkbox>
+                                                        <mat-checkbox type="checkbox" class="mr-3" value="4">Professional livelihood</mat-checkbox>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <mat-label class="mr-3"> Babysitting</mat-label>
+                                                    </td>
+                                                    <td>
+                                                        <mat-checkbox type="checkbox" class="mr-3" value="1">Little experiencen</mat-checkbox>
+                                                        <mat-checkbox type="checkbox" class="mr-3" value="2">Hand puppets</mat-checkbox>
+                                                        <mat-checkbox type="checkbox" class="mr-3" value="2">Giant dolls</mat-checkbox>
+                                                        <mat-checkbox type="checkbox" class="mr-3" value="2">Lots of dolls</mat-checkbox>
+                                                        <mat-checkbox type="checkbox" class="mr-3" value="2">Engages in the field of construction</mat-checkbox>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <mat-label class="mr-3"> Bukharit</mat-label>
+                                                    </td>
+                                                    <td>
+                                                        <mat-checkbox type="checkbox" class="mr-3" value="1">Understands little</mat-checkbox>
+                                                        <mat-checkbox type="checkbox" class="mr-3" value="2">speaker of a language</mat-checkbox>
+                                                        <mat-checkbox type="checkbox" class="mr-3" value="2">Native language</mat-checkbox>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <mat-label class="mr-3">Bits | granite</mat-label>
+                                                    </td>
+                                                    <td>
+                                                        <mat-checkbox type="checkbox" class="mr-3" value="1">Both bits and games</mat-checkbox>
+                                                        <mat-checkbox type="checkbox" class="mr-3" value="2">Game roles only</mat-checkbox>
+                                                        <mat-checkbox type="checkbox" class="mr-3" value="2"> Bits</mat-checkbox>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <mat-label class="mr-3">Directed in front of a camera</mat-label>
+                                                    </td>
+                                                    <td>
+                                                        <mat-checkbox type="checkbox" class="mr-3" value="1">Directed by cinema and television</mat-checkbox>
+                                                        <mat-checkbox type="checkbox" class="mr-3" value="2">Studies in directing</mat-checkbox>
+                                                        <mat-checkbox type="checkbox" class="mr-3" value="2">Directing Image | Web Videos | Independent clips / projects</mat-checkbox>
+                                                        <mat-checkbox type="checkbox" class="mr-3" value="2"> Little experience</mat-checkbox>
+                                                    </td>
+                                                </tr>
+                                            </table>
+    
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="form-group mt-2">
+                          
+                            <button  style="float:left;" (click)="toggle()" id="bt" type="button" class="btn btn-primary mat-raised-button mat-button-base mat-primary">Save</button>
+                            <mat-form-field class="ml-5">
+                                <mat-select placeholder="Search">
+                                    <mat-option value="One">Notify the audition markers</mat-option>
+                                    <mat-option value="Two">Send a message to the marked</mat-option>
+                                    <mat-option value="Two">Send SMS to marked</mat-option>
+                                    <mat-option value="Two">Export marked to excel</mat-option>
+                                    <mat-option value="Two">Create a page to send</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <ng-container *ngIf="show">
+                                <div style="margin: 0 auto;text-align: left;">
+                                      
+                                    <div class="form-group">
+                                            <mat-form-field  style="width:46%" class="mr-5">
+                                                <mat-select placeholder="
+                                                browsing">
+                                                    <mat-option value="1">1</mat-option>
+                                                    <mat-option value="2">2</mat-option>
+                                                    <mat-option value="3">3</mat-option>
+                                                    <mat-option value="4">4</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        <mat-form-field style="width:46%" class="mr-5">
+                                            <mat-select placeholder="
+                                            Forward> Page Size">
+                                                <mat-option value="1">10</mat-option>
+                                                <mat-option value="2">20</mat-option>
+                                                <mat-option value="3">100</mat-option>
+                                                <mat-option value="4">200</mat-option>
+                                                <mat-option value="4">400</mat-option>
+                                                <mat-option value="4">
+                                                        Everyone</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                        </div>
+                                        <div class="form-group">
+                                                <mat-form-field style="width:46%" class="mr-5">
+                                                    <mat-select placeholder="Show">
+                                                        <mat-option value="1">1</mat-option>
+                                                        <mat-option value="2">2</mat-option>
+                                                        <mat-option value="3">3</mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                                <mat-form-field  style="width:46%" class="mr-5">
+                                                    <mat-select placeholder="
+                                                    Pictures at most">
+                                                        <mat-option value="1">Show in columns</mat-option>
+                                                        <mat-option value="2">
+                                                                Show in band view</mat-option>
+                                                       
+                                                    </mat-select>
+                                                </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <button type="button" type="button" class="btn btn-primary
+                                    
+                                    
+                                    
+                                    mat-raised-button mat-button-base mat-primary">
+                                            Mark all results</button>
+                                            <div class="form-group">
+                                                    <mat-form-field class="full-wid">
+                                                        <textarea matInput placeholder="
+                                                        Sweeping comments" formControlName="Descrp" required></textarea>
+                                                    </mat-form-field>
+                                                </div>
+                                                <mat-label class="mr-3">
+                                                        Showor:</mat-label>
+                                                <button type="button" type="button" class="btn btn-primary mat-raised-button mat-button-base mat-primary">
+                                                        Select Them All</button>
+                                    </ng-container>
+                                   
+
+                    </form>
+                </div>
+            </mat-card>
+        </div>
+    </div>

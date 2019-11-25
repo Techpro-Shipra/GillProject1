@@ -1,0 +1,186 @@
+
+<div class="grid-wrapper form-validation-wrapper " style="width:50%">
+		<div class="app-card">
+				<mat-card>
+						<div class="card-title" style="box-shadow:none !important;">
+							<h1>Add Player | Player Search</h1>
+						</div>
+						<div class="card-content-content">
+								
+								<form [formGroup]="myForm" (ngSubmit)="onSubmit()">	
+									<div class="form-group">      
+										<mat-form-field class="full-wid">
+												<input matInput placeholder="First Name" formControlName="FirstName" >
+										</mat-form-field>
+										<mat-error *ngIf="myForm.controls['FirstName'].touched && !myForm.controls['FirstName'].valid">
+											<mat-error *ngIf="myForm.controls['FirstName'].hasError('required') " class="required alert-error">  
+											You must include a First Name.
+											</mat-error>  
+										</mat-error>
+									</div>
+									<div class="form-group">
+										<mat-form-field class="full-wid">
+												<input matInput placeholder="Last Name" formControlName="LirstName">
+										</mat-form-field>
+										<mat-error *ngIf="myForm.controls['LirstName'].touched && !myForm.controls['LirstName'].valid">
+											<mat-error *ngIf="myForm.controls['LirstName'].hasError('required') " class="required alert-error">  
+											You must include a Last Name.
+											</mat-error> 
+										</mat-error> 
+									</div>
+									<div class="form-group">
+										<mat-form-field class="full-wid">
+										   <mat-select placeholder="Gender" formControlName="Gender">
+											  <mat-option value="One">Female</mat-option>
+												<mat-option value="Two">Male</mat-option>
+										   </mat-select >
+										</mat-form-field>
+									</div>
+									<div class="form-group">
+										<mat-form-field class="full-wid">
+												<input matInput placeholder="Height" type="number" formControlName="Height" required>
+										</mat-form-field>
+										<mat-error *ngIf="myForm.controls['Height'].touched && !myForm.controls['Height'].valid">
+											<mat-error *ngIf="myForm.controls['Height'].hasError('required') " class="required alert-error">  
+											You must include a Height.
+											</mat-error> 
+										</mat-error> 
+									</div>
+									<div class="form-group">
+										<mat-form-field class="full-wid">
+											<input matInput [matDatepicker]="picker1"  formControlName='BirthDay' placeholder="Date Of Birth" required>
+											<!-- <input matInput [ngModel]="pickerTwoValue | date:'dd/MM/yyyy'" placeholder="Choose a date"> -->
+											<mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+											<mat-datepicker #picker1></mat-datepicker>
+										</mat-form-field>
+									</div>
+									<div class="form-group">
+										<mat-form-field class="full-wid">
+											<input matInput [matDatepicker]="picker2"  formControlName='MembershipStartDate' placeholder="Subscription From" required>
+											<!-- <input matInput [ngModel]="pickerTwoValue | date:'dd/MM/yyyy'" placeholder="Choose a date"> -->
+											<mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+											<mat-datepicker #picker2></mat-datepicker>
+										</mat-form-field>
+									</div>
+									<div class="form-group">
+										<mat-form-field class="full-wid">
+											<input matInput [matDatepicker]="picker3"  formControlName='MembershipExpiryDate' placeholder="Subscription To" required>
+											<!-- <input matInput [ngModel]="pickerTwoValue | date:'dd/MM/yyyy'" placeholder="Choose a date"> -->
+											<mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+											<mat-datepicker #picker3></mat-datepicker>
+										</mat-form-field>
+									</div>
+									<div class="form-group">
+										<mat-form-field class="full-wid">
+											<textarea matInput placeholder="Leave a comment" formControlName="Descrp" required></textarea>
+										</mat-form-field>
+									</div>
+									<div class="form-group">
+										<mat-form-field class="full-wid">
+										   <mat-select placeholder="Disabled" formControlName="Disable" required>
+											  <mat-option value="No">No</mat-option>
+												<mat-option value="Yes">Yes</mat-option>
+										   </mat-select>
+										</mat-form-field>
+									</div>
+									<div class="form-group">
+										<mat-form-field class="full-wid">
+										   <mat-select placeholder="Hidden" formControlName="Hidden" required>
+											  <mat-option value="No">No</mat-option>
+												<mat-option value="yes">Yes</mat-option>
+										   </mat-select>
+										</mat-form-field>
+									</div>
+									<div class="form-group">
+										<mat-form-field class="full-wid">
+												<input matInput placeholder="Email" formControlName="Email" required>
+										</mat-form-field>
+										<mat-error *ngIf="myForm.controls['Email'].touched && !myForm.controls['Email'].valid">
+											<mat-error *ngIf="myForm.controls['Email'].hasError('required') " class="required alert-error">  
+											You must include a Email.
+											</mat-error> 
+										</mat-error> 
+									</div>
+									<div class="form-group">
+										<mat-form-field class="full-wid">
+												<input matInput placeholder="Phone" formControlName="Phone" type="number" required>
+										</mat-form-field>
+										<mat-error *ngIf="myForm.controls['Phone'].touched && !myForm.controls['Phone'].valid">
+											<mat-error *ngIf="myForm.controls['Phone'].hasError('required') " class="required alert-error">  
+											You must include a Phone.
+											</mat-error> 
+										</mat-error> 
+									</div>
+									<div class="form-group">
+										<mat-form-field class="full-wid">
+										   <mat-select placeholder="Max images" formControlName="MaxPictures" required>
+											  <mat-option value="1">1</mat-option>
+											  <mat-option value="2">2</mat-option>
+											  <mat-option value="3">3</mat-option>
+											  <mat-option value="4">4</mat-option>
+											  <mat-option value="5">5</mat-option>
+											  <mat-option value="6">6</mat-option>
+											  <mat-option value="7">7</mat-option>
+											  <mat-option value="8">8</mat-option>
+											  <mat-option value="9">9</mat-option>
+											  <mat-option value="10">10</mat-option>
+										   </mat-select>
+										</mat-form-field>
+									</div>
+									<div class="form-group">
+										<mat-form-field class="full-wid">
+										   <mat-select placeholder="Max Video" formControlName="MaxVideos" required>
+											  <mat-option value="1">1</mat-option>
+											  <mat-option value="2">2</mat-option>
+											  <mat-option value="3">3</mat-option>
+											  <mat-option value="4">4</mat-option>
+										   </mat-select>
+										</mat-form-field>
+									</div>
+									<div class="form-group">
+										<mat-form-field class="full-wid">
+										   <mat-select placeholder="Max Sound" formControlName="MaxSounds" required>
+											  <mat-option value="1">1</mat-option>
+											  <mat-option value="2">2</mat-option>
+										   </mat-select>
+										</mat-form-field>
+									</div>
+									<div class="form-group">
+										<mat-form-field class="full-wid">
+												<input matInput placeholder="Username" formControlName="UserName" type="text" required>
+										</mat-form-field>
+										<mat-error *ngIf="myForm.controls['UserName'].touched && !myForm.controls['UserName'].valid">
+											<mat-error *ngIf="myForm.controls['UserName'].hasError('required') " class="required alert-error">  
+											You must include a Username.
+											</mat-error> 
+										</mat-error> 
+									</div>
+									<div class="form-group">
+										<mat-form-field class="full-wid">
+												<input matInput placeholder="Password" formControlName="Pswd" type="password" required>
+										</mat-form-field>
+										<mat-error *ngIf="myForm.controls['Pswd'].touched && !myForm.controls['Pswd'].valid">
+											<mat-error *ngIf="myForm.controls['Pswd'].hasError('required') " class="required alert-error">  
+											You must include a Password.
+											</mat-error> 
+										</mat-error> 
+									</div>
+									<div class="form-group">
+										<mat-form-field class="full-wid">
+										   <mat-select placeholder="Submit Publication?" formControlName="Publication" required>
+											  <mat-option value="1">No</mat-option>
+											  <mat-option value="2">Yes</mat-option>
+										
+										   </mat-select>
+										</mat-form-field>
+									</div>
+									<button type="submit" class="btn btn-primary mat-raised-button mat-button-base mat-primary">Save</button>
+							
+								
+							
+							
+							</form>
+							</div>
+				</mat-card>
+		</div>
+</div>
